@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "736668094274",
+    "project_id": "melodify-bd31e",
+    "storage_bucket": "melodify-bd31e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736668094274:android:6f1d46658c7f1eae7e02db",
+        "android_client_info": {
+          "package_name": "com.example.melodify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736668094274-c1oiq7l8mpp2lrt8q5c52pb2r6slvq0d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.melodify",
+            "certificate_hash": "66fe59e41790b2c825f1e1d5738a56a9ec8181f1"
+          }
+        },
+        {
+          "client_id": "736668094274-kivfvqkn1n5uqe5ue94ssirg0n7a5kad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwlRSFDyq3kD_sSmHds4f_yW2io9EJFy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736668094274-kivfvqkn1n5uqe5ue94ssirg0n7a5kad.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "736668094274-jtq9ji7ordg083stn15j6e92o5rcahlq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.melodify"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

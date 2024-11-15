@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "melodify-441216",
+  "private_key_id": "8d2463a6eae9a5a502752956bd8f6cae3d2d4ced",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDmMICcsPqpPXzE\n6Gnd0FLJhAXxlBQ7vAZMHqgOzgfkx0lxO2P1m8K2oG1WXWVW7nbTpznfsuBSVUEv\npNPxAqH8SVk6gaMF2qyVf3BNITUJIxHoBHgpR0Xsa4nho416WmiwAkA2VfsIDNcM\n1l8H4YChsAh+jdOuApLiiKp7U18G9Wol+hC1jG5bBJKM14of6afziDra1tMYOrlU\n9UnHvjtoXWKaicgstBnZSIVBrWM5CGDB29kRGPPfWxWT6sGjzVozMqQgxuN4OKFw\ndKGJNy3nHs01Q9J4vsBMYbZl0Ocq39mRQiMYst0r+BPIL5CKAENzI2eA/Cp3TtjD\n6DSE4SeHAgMBAAECggEAZ6K6pNFBaWTXgcepskYSn8ui6Wrj2SkEJM1AmLnF8AiR\nVjuI+5FPDu4Xi+SstYDTWuNVORPNzwO3P34UNdQbnfxgAelPvlj/jqc7pl4nBKAX\ndcBdYShHoPOhtkbucYG21FePFWeMh8lQIOV7D49FXIZmrKOqBBQAkaE6MCAPDpAg\nzg7l6UcAxcz55WqCVMaYIXJ8/vm3QHZ8sTMJIEDy0xHqlyiKkthtEGiIm5WobTOs\nhUYoqrWgNpMX9LDf8zIkSo4SRTrM/6JLz+JAtBBSlzfrAAxZGCi6D0MmDohqVxum\nUkFftvQVcKRiT7XY9WxTSm9fvfV0MKx1HwJ9FgwGUQKBgQDzRFtVT7igfj2+nSr/\nWP9GX/hGbpgxvkZKhjdclNfXFcchMrZkgqIKn3XWoQhfkAxdq6ZjIQ6uDGf3RvDp\nmeleY85Y50ZoEPqNqnviy122XvD1i820LPUV1F3McUxsIjYtGtitAdsLISAhLZgc\nOKsGc35qsxpTUv013e+fWiL8OwKBgQDyPOnisw4StbOEbJK04VFgjWEmyL5/h64/\n7JKy6xPl266NQs2hcbf3ciKQVEY8QZSg/ELXBE4hRzMOr3YDG0/DjC7KCsM3p95z\n9MVBYpWUIfgQwGyd3dO+6PgM/g6mdCTGzefJe2bnrKxv2kp5KlS6lrVvoYBwqFAg\n4aLlS7PpJQKBgQCJ62NsxroCJBCVlT3fb3GrUJXOOL2I1ju73MRedPS6ONqg88N8\n0KNWKnoAqWO56k1YfgzjfsZ33wjCpTHI/z3UCfnfZaABOD8VOmbqeiozTziFvjFt\nyV9adQCI/GM7m1nj0KivzbGGac1xggwPVAGCstAlZk2ymAZ/F8jXK59SKQKBgQDZ\nZVGB4q/+mpNBhS8kphIiVL+bzw0n5ty7AdWmPNLetwkwPYPOIAC6UfQzE271JOX+\nlGZoEbUMqJlp1I5Uu24aUPSs3nvUtxMtfb6Jr7AOAW5fmlHgW/RsoSf8gQUk3Zcj\n1Cbw646u3Ijk2UN8+kCQNDEgvhBHCsbeu6E1p3sPAQKBgQCgqnuf6pXX8XqHvNir\nEnfRQaKEaqqKN60ZWXQ4HXorP0N4+bMDK0A2P+Xj0Sn0CSurqsyhvW0SwLMaDMyJ\naFIb3LRLXNQw3jRQc8I/iDXumZNfo8aigxVfvAG66QnJsPlEIUNbu/fbzbSruL6X\nHlukf/85bpxPyTf3li5/FgcAng==\n-----END PRIVATE KEY-----\n",
+  "client_email": "flutter-drive-service-account@melodify-441216.iam.gserviceaccount.com",
+  "client_id": "106860766204463827443",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/flutter-drive-service-account%40melodify-441216.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
