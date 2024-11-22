@@ -8,6 +8,10 @@ class SongProvider with ChangeNotifier {
 
   List<Map<String, dynamic>> _songs = [];
   List<Map<String, dynamic>> get songs => _songs;
+  List<String> _coverUrls = [];
+  List<String> get coverUrls => _coverUrls;
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
   String? _errorMessage;
   String? get errorMessage => _errorMessage;
   // Thêm bài hát
@@ -38,10 +42,10 @@ class SongProvider with ChangeNotifier {
   }
 
   // Cập nhật bài hát
-  Future<void> updateSong(String songId, SongModel updatedSong) async {
+  Future<void> updateSong(String songId, String title, String artist, String genre, String audioUrl, String lyricUrl, String coverUrl) async {
     try {
       _errorMessage = null;
-      await _firestoreService.updateSong(songId, updatedSong);
+      await _firestoreService.updateSong(songId, title: title, artist: artist, genre: genre, audioUrl: audioUrl, lyricUrl: lyricUrl, coverUrl: coverUrl);
       _errorMessage = null;
       await fetchSongs(); // Cập nhật lại danh sách sau khi cập nhật
       notifyListeners();
@@ -63,6 +67,23 @@ class SongProvider with ChangeNotifier {
       print("Không thể xóa bài hát: $e");
       _errorMessage = "Không thể lấy xóa bài hát";
       rethrow;
+    }
+  }
+  //Lấy ds ảnh để hển thị slide show
+  Future<void> fetchCoverUrls() async {
+    try {
+      _isLoading = true;
+      notifyListeners();
+
+      _coverUrls = await _firestoreService.getCoverUrls();
+
+      print('$_coverUrls');
+
+    } catch (e) {
+      print('Error fetching cover URLs: $e');
+    } finally {
+      _isLoading = false;
+      notifyListeners();
     }
   }
 }

@@ -10,10 +10,7 @@ class _UserDisconveryScreenState extends State<UserDisconveryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Khám phá')),
-      body: const Center(
-        child: Text('Khám phá'),
-      ),
+      backgroundColor: Color(0xFF121212),
     );
   }
 }

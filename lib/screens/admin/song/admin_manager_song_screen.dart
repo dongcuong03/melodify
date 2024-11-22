@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:melodify/screens/admin/song/admin_detail_song_screen.dart';
+import 'package:melodify/screens/admin/song/admin_update_song_screen.dart';
 import 'package:provider/provider.dart';
 import '../../../models/song_model.dart';
+import '../../../providers/google_drive_provider.dart';
 import '../../../providers/song_provider.dart';
 import '../../../widgets/admin_search_widget.dart';
 import 'admin_add_song_screen.dart';
@@ -228,9 +230,19 @@ class _AdminManagerSongScreenState extends State<AdminManagerSongScreen> {
                                     break;
                                   case 'edit':
                                   // Thêm hành động khi chọn "Sửa"
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => AdminUpdateSongScreen(
+                                          song: songItem,
+                                          songId: songIdItem,
+                                        ),
+                                      ),
+                                    );
                                     break;
                                   case 'delete':
                                   // Thêm hành động khi chọn "Xóa"
+                                  _showConfirmDialog(songIdItem, songItem.audioUrl, songItem.lyricUrl, songItem.coverUrl);
                                     break;
                                 }
                               },
@@ -365,4 +377,62 @@ class _AdminManagerSongScreenState extends State<AdminManagerSongScreen> {
       ),
     );
   }
+
+  // Hàm hiển thị hộp thoại xác nhận
+  void _showConfirmDialog(String songId, String audioURL, String lyricURL, String coverURL) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+
+          title: Text("Xác nhận"),
+          content: Text(
+              "Hành động này sẽ xóa bài hát khỏi cơ sở dữ liệu. Bạn có muốn tiếp tục?"),
+          actions: [
+            TextButton(
+              child: Text("Hủy"),
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Color(0xFF005609), // Màu xanh cho nút Hủy
+                padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 25),
+
+              ),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            SizedBox(width: 2,),
+            TextButton(
+              child: Text("Tiếp tục"),
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.grey.withOpacity(0.3), // Màu xám cho nút Xóa
+                padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 15),
+              ),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                _deleteFile(audioURL);
+                _deleteFile(lyricURL);
+                _deleteFile(coverURL);
+                _deleteSong(songId);
+
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _deleteFile(String fileURL) async {
+    final provider = Provider.of<GoogleDriveProvider>(context, listen: false);
+    await provider.deleteFile(fileURL);
+  }
+
+  void _deleteSong(String songId) async{
+    final provider = Provider.of<SongProvider>(context, listen: false);
+    await provider.deleteSong(songId);
+  }
+
+
 }

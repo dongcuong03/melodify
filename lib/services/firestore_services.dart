@@ -7,6 +7,7 @@ import '../models/song_model.dart';
 class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+//USER
   Future<void> addUserToFirestore(UserModel user, String uid) async {
     try {
       await _firestore.collection('users').doc(uid).set(user.toMap());
@@ -106,6 +107,8 @@ class FirestoreService {
     });
   }
 
+
+//GENRE
   Future<bool> checkGenreExists(String genreName) async {
     try {
       final querySnapshot = await _firestore
@@ -197,7 +200,7 @@ class FirestoreService {
     }
   }
 
-
+//SONGS
   //Hàm thêm bài hát
   Future<void> addSong(SongModel song) async{
     try {
@@ -232,19 +235,39 @@ class FirestoreService {
     }
   }
 
-  Future<void> updateSong(String songId, SongModel updatedSong) async {
+  Future<void> updateSong(
+      String songId, {
+        required String title,
+        required String artist,
+        required String genre,
+        required String audioUrl,
+        required String lyricUrl,
+        required String coverUrl,
+      }) async {
     try {
-      // Cập nhật thời gian chỉnh sửa
-      updatedSong.updatedAt = Timestamp.now();
+      // Tạo một Map chỉ chứa các trường cần cập nhật
+      Map<String, dynamic> updatedData = {};
 
-      // Chuyển đổi SongModel thành Map và cập nhật vào Firestore
-      await _firestore.collection('songs').doc(songId).update(updatedSong.toMap());
+      updatedData['title'] = title;
+      updatedData['artist'] = artist;
+      updatedData['genre'] = genre;
+      updatedData['audioUrl'] = audioUrl;
+      updatedData['lyricUrl'] = lyricUrl;
+      updatedData['coverUrl'] = coverUrl;
+
+      // Cập nhật thời gian chỉnh sửa
+      updatedData['updatedAt'] = Timestamp.now();
+
+      // Cập nhật dữ liệu vào Firestore
+      await _firestore.collection('songs').doc(songId).update(updatedData);
       print('Cập nhật bài hát thành công');
     } catch (e) {
       print('Lỗi khi cập nhật bài hát: $e');
       rethrow;
     }
   }
+
+
   // Hàm xóa bài hát
   Future<void> deleteSong(String songId) async {
     try {
@@ -254,5 +277,25 @@ class FirestoreService {
       print('Lỗi khi xóa bài hát: $e');
       rethrow;
     }
+  }
+
+  // Lấy danh sách các `coverUrl` từ Firestore
+  Future<List<String>> getCoverUrls() async {
+    try {
+      final snapshot = await _firestore.collection('songs').get();
+      final rawUrls = snapshot.docs.map((doc) => doc['coverUrl'] as String).toList();
+      return rawUrls.map(_convertToDirectLink).toList();
+    } catch (e) {
+      throw Exception('Error fetching cover URLs: $e');
+    }
+  }
+
+  // Chuyển đổi liên kết Google Drive thành liên kết trực tiếp
+  String _convertToDirectLink(String url) {
+    final fileId = RegExp(r'/file/d/(.*?)/view').firstMatch(url)?.group(1);
+    if (fileId != null) {
+      return 'https://drive.google.com/uc?export=view&id=$fileId';
+    }
+    return url; // Trả về link gốc nếu không phù hợp
   }
 }
